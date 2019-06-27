@@ -1,0 +1,99 @@
+$tablet-width: 450px;
+$desktop-width: 1200px;
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+.timer-container {
+    font-size: 100px;
+
+    button {
+        border: none;
+        outline: none;
+        justify-content: space-around;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        background: none;
+        color: white;
+    }
+
+    svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+}
+
+.timer {
+    > * {
+        font-size: 50px;
+
+        @include tablet {
+            font-size: 100px;
+        }
+
+        @include desktop {
+            font-size: 150px;
+        }
+    }
+
+    span {
+        display: inline-flex;
+        width: calc(100vw/3);
+        justify-content: center;
+        cursor: default;
+        background: none;
+        color: white;
+
+        @include desktop {
+            width: 400px;
+        }
+    }
+
+    button {
+        width: 50px;
+        cursor: pointer;
+
+        @include tablet {
+            width: 100px;
+        }
+
+        @include desktop {
+            width: 150px;
+        }
+    }
+}
+
+.controls {
+    button {
+        font-size: 25px;
+        z-index: 1;
+
+        @include tablet {
+            font-size: 50px;
+        }
+
+        @include desktop {
+            font-size: 100px;
+        }
+    }
+
+    height: 50px;
+    background: none;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
