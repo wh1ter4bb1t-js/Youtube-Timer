@@ -12,11 +12,16 @@ app.use(cors());
 
 let cache;
 const url =
-  "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UULNgu_OupwoeESgtab33CCw&maxResults=50";
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=playlist";
+
+const videourl =
+  "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=PL4QNnZJr8sRNKjKzArmzTBAlNYBDN2h-J";
+
+const search = "kpop";
 
 const getVideos = pageToken =>
   fetch(
-    `${url}&key=${process.env.GOOGLE_API_KEY}` +
+    `${url}&q=${search}&key=${process.env.GOOGLE_API_KEY}` +
       (pageToken ? `&pageToken=${pageToken}` : "")
   ).then(response => response.json());
 
